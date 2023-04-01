@@ -540,7 +540,11 @@ class UserDetails : AppCompatActivity() {
 
 
             }
-            Toast.makeText(this, "Successfully inserted into DB ...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this,
+                "Successfully inserted ${nameEntered!!} into DB ...",
+                Toast.LENGTH_SHORT
+            ).show()
 
         } else {
             Toast.makeText(this, "Something went wrong in Inserting ...", Toast.LENGTH_SHORT).show()

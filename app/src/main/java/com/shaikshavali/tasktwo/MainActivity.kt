@@ -1,5 +1,6 @@
 package com.shaikshavali.tasktwo
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -22,10 +23,13 @@ class MainActivity : AppCompatActivity() {
     private var tvEdit: TextView? = null
     //declaring necessary variables
 
+    private lateinit var rvAdapter: RvItemAdapter
+
     private var userDao: UserDAO? = null
-    private var usersList: ArrayList<UserEntity>? = null
+    private lateinit var usersList: ArrayList<UserEntity>
 
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
@@ -52,43 +56,61 @@ class MainActivity : AppCompatActivity() {
         userDao = (application as UserApp).db.userDao()
         //creating the DAO variable
 
+        var arList = ArrayList<UserEntity>()
         lifecycleScope.launch {
-            userDao?.fetchAllUsers()?.collect {
 
-                usersList = ArrayList(it)
+            userDao?.fetchAllUsers()?.collect {
+                arList = ArrayList(it)
                 //fetching all users into arrayList
 
-                listToRv(usersList!!, userDao!!)
+                listToRv(arList, userDao!!)
 
             }
+
         }
+        usersList = arList
+        //initialising the lateinit variable
 
         tvEdit = binding?.tvedit
 
+        rvAdapter = RvItemAdapter(usersList)
+        binding?.rview1?.adapter = rvAdapter
+        rview?.layoutManager = LinearLayoutManager(this)
+
+
         tvEdit?.setOnClickListener {
 
-            val rvItemAdapter =
-                RvItemAdapter(usersList!!)
-            //need to be done
-            rvItemAdapter.displayCancel()
+            if (binding?.tvedit?.text?.equals("Edit") == true) {
+                binding?.tvedit?.text = getString(R.string.cancel_)
+                //changing the"Edit" to "Cancel"
+                displayCancel("Cancel")
+                // Log.e("In onClickListener ", "Changing to cancel and variable is ${rvAdapter.isEditCancelClicked}")
 
-//            val userEntity = usersList?.get(0)
-//            usersList?.remove(userEntity)
-//
-//            Log.e("User List ","removed and added to list of ${userEntity?.name}")
-//
-//            if (userEntity != null) {
-//                usersList?.add(0,userEntity)
-//            }
-//
-//            rvItemAdapter.notifyItemRemoved(0)
+            } else {
+                binding?.tvedit?.text = getString(R.string.edit)
 
-        // "here i tried to delete the user from array list and notify the adapter but it didn't worked"
+                displayCancel("Edit")
+                //Log.e("In onclickListener ", "Changing to edit and variable is ${rvAdapter.isEditCancelClicked}")
 
+
+            }
 
         }
 
+    }
 
+    @SuppressLint("NotifyDataSetChanged")
+    private fun displayCancel(str: String) {
+        rvAdapter.isEditCancelClicked = str == "Cancel"
+
+        // Logic is whenever I click the "edit" button in screen it invokes
+        // this method and change the variable to true and it should display
+        //  the (-) delete image to the user...
+
+        // Log.e("Display Cancel","Display cancel is clicked variable is  ${rvAdapter.isEditCancelClicked}")
+        rvAdapter.notifyDataSetChanged()
+        //notifying the adapter that the isEditCancelClicked is changed and
+        // again updating the recycler view adapter
     }
 
     private fun nextActivityOnClickingCard(
@@ -119,12 +141,13 @@ class MainActivity : AppCompatActivity() {
         if (usersList.isNotEmpty()) {
             //checking whether the is null !!
 
-            val rvAdapter = RvItemAdapter(usersList)
+            rvAdapter = RvItemAdapter(usersList)
             binding?.rview1?.layoutManager = LinearLayoutManager(this)
             //Setting the layout manager to item in recycler view
 
             binding?.rview1?.adapter = rvAdapter
             // Assigning the created adapter to recycler view's adapter
+
 
             rvAdapter.onDeleteClick = {
                 deleteUser(it)
@@ -142,6 +165,7 @@ class MainActivity : AppCompatActivity() {
             userDao?.delete(userEntity)
             //deleting the User
         }
+        tvEdit?.text = getString(R.string.edit)
         Toast.makeText(this, "Deleted ${userEntity.name}", Toast.LENGTH_SHORT).show()
 
     }

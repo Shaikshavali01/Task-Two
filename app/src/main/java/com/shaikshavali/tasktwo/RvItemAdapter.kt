@@ -17,19 +17,9 @@ class RvItemAdapter(private val items: ArrayList<UserEntity>) :         //creati
     var onDeleteClick: ((UserEntity) -> Unit)? = null
 
     //On Click's method for deleting the particular user     ''            ''           ''
-    private var isEditCancelClicked: Boolean = true
+    var isEditCancelClicked: Boolean = false
+    //for visibility of the (-) button (textview)
 
-
-    fun displayCancel() {
-        isEditCancelClicked = true
-        // Logic is whenever I click the "edit" button in screen it invokes
-        // this method and change the variable to true and it should display
-        //  the (-) delete image to the user... but it is not working
-        //  so I directly put the variable to true and it displays every time
-        //  I have to implement this........
-        // Log.e("Display Cancel","Display cancel is clicked,,")
-
-    }
 
     class ViewHolder(binding: Recyclerview1Binding) :
         RecyclerView.ViewHolder(binding.root) {     //creating the View Holder class for the parameter of the
@@ -53,7 +43,7 @@ class RvItemAdapter(private val items: ArrayList<UserEntity>) :         //creati
         //for rating purpose....
 
         val cardView = binding.rvcard
-        val imgCancel = binding.imgcancel
+        var imgCancel = binding.imgcancel
 
 
     }
@@ -76,6 +66,7 @@ class RvItemAdapter(private val items: ArrayList<UserEntity>) :         //creati
         val context = holder.itemView.context
         val item = items[position]
         //getting the particular item from arrayList of items
+
 
         holder.tvName.text = item.name
         holder.tvClgName.text = item.clgName
@@ -129,12 +120,12 @@ class RvItemAdapter(private val items: ArrayList<UserEntity>) :         //creati
             // Log.e("Inside item view","item view is clicked...${item.name}")  // For MY Checking and Confirmation Purpose
 
         }
-        if (isEditCancelClicked)
+        // Log.e("Inside OnBindViewHolder","$isEditCancelClicked")
+        if (isEditCancelClicked) {
             holder.imgCancel.visibility = View.VISIBLE
-        //Logic need to be implemented but im unable to do it :(  :(
-        // My logic is that when the "Edit" is clicked then the cancel image
+            // My logic is that when the "Edit" is clicked then the cancel image should shown..
 
-        else
+        } else
             holder.imgCancel.visibility = View.GONE
         //should VISIBLE otherwise it should GONE
 
