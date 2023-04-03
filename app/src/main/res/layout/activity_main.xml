@@ -67,12 +67,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rview1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="16dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/users" />
+        app:layout_constraintTop_toBottomOf="@id/users"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 
     <androidx.appcompat.widget.AppCompatImageButton
@@ -80,15 +82,16 @@
         android:id="@+id/imgbtnext"
         android:layout_width="51dp"
         android:layout_height="51dp"
-        android:layout_marginStart="300dp"
+
         android:layout_marginTop="580dp"
         android:background="@drawable/addusersshape"
         android:contentDescription="@string/new_user_registration_button"
 
         android:padding="20dp"
 
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/users"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
 
         />
 
