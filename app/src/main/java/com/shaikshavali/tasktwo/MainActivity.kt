@@ -160,11 +160,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun deleteUser(userEntity: UserEntity) {
         lifecycleScope.launch {
             userDao?.delete(userEntity)
             //deleting the User
         }
+        rvAdapter.notifyDataSetChanged()
+        //updating the adapter after deleting the user...
         tvEdit?.text = getString(R.string.edit)
         Toast.makeText(this, "Deleted ${userEntity.name}", Toast.LENGTH_SHORT).show()
 

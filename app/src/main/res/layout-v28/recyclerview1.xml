@@ -6,7 +6,10 @@
     android:layout_width="match_parent"
 
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+
+
+    >
 
     <TextView
         android:id="@+id/imgcancel"
@@ -35,7 +38,6 @@
         android:background="@drawable/cardborder"
         android:foreground="@drawable/cardborder"
 
-
         app:cardCornerRadius="10dp"
         app:cardElevation="2dp"
         app:cardUseCompatPadding="false"
@@ -52,7 +54,7 @@
             android:id="@+id/imguser"
             android:layout_width="42dp"
             android:layout_height="42dp"
-            android:layout_marginStart="9dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="43dp"
 
             android:background="@drawable/usermale"
@@ -64,7 +66,7 @@
             android:id="@+id/rvinnercons"
             android:layout_width="220dp"
             android:layout_height="125dp"
-            android:layout_marginStart="60dp"
+            android:layout_marginStart="55dp"
             android:layout_marginTop="10dp"
             android:orientation="vertical"
 
@@ -85,8 +87,8 @@
                 >
 
                 <TextView
-                    android:layout_width="45dp"
-                    android:layout_height="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/opensanssemibold"
                     android:paddingStart="2dp"
                     android:paddingBottom="2dp"
@@ -100,8 +102,8 @@
 
                 <TextView
                     android:id="@+id/tvitname"
-                    android:layout_width="75dp"
-                    android:layout_height="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/opensansregular"
                     android:padding="2dp"
                     android:textSize="12dp"
@@ -121,8 +123,8 @@
                 >
 
                 <TextView
-                    android:layout_width="87dp"
-                    android:layout_height="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/opensanssemibold"
                     android:paddingStart="2dp"
                     android:paddingBottom="2dp"
@@ -136,8 +138,8 @@
 
                 <TextView
                     android:id="@+id/tvitclgname"
-                    android:layout_width="100dp"
-                    android:layout_height="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/opensansregular"
                     android:paddingBottom="2dp"
                     android:textSize="12dp"
@@ -158,8 +160,8 @@
                 >
 
                 <TextView
-                    android:layout_width="55dp"
-                    android:layout_height="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/opensanssemibold"
                     android:paddingStart="2dp"
                     android:paddingBottom="2dp"
@@ -173,8 +175,8 @@
 
                 <TextView
                     android:id="@+id/tvitgender"
-                    android:layout_width="60dp"
-                    android:layout_height="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/opensansregular"
                     android:paddingBottom="2dp"
                     android:textSize="12dp"
@@ -195,8 +197,8 @@
                 >
 
                 <TextView
-                    android:layout_width="125dp"
-                    android:layout_height="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/opensanssemibold"
                     android:paddingStart="2dp"
                     android:paddingBottom="2dp"
@@ -210,8 +212,8 @@
 
                 <TextView
                     android:id="@+id/tvitbtech"
-                    android:layout_width="65dp"
-                    android:layout_height="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/opensansregular"
                     android:paddingBottom="2dp"
                     android:textSize="12dp"
@@ -231,8 +233,8 @@
                 >
 
                 <TextView
-                    android:layout_width="37dp"
-                    android:layout_height="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/opensanssemibold"
                     android:paddingStart="2dp"
                     android:paddingBottom="2dp"
@@ -246,8 +248,8 @@
 
                 <TextView
                     android:id="@+id/tvitdob"
-                    android:layout_width="80dp"
-                    android:layout_height="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/opensansregular"
                     android:paddingBottom="2dp"
                     android:textSize="12dp"
@@ -267,8 +269,8 @@
                 >
 
                 <TextView
-                    android:layout_width="97dp"
-                    android:layout_height="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/opensanssemibold"
                     android:paddingStart="2dp"
                     android:paddingBottom="2dp"
@@ -282,8 +284,8 @@
 
                 <TextView
                     android:id="@+id/tvitdatetime"
-                    android:layout_width="120dp"
-                    android:layout_height="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/opensansregular"
                     android:paddingBottom="2dp"
                     android:textSize="12dp"
@@ -300,7 +302,7 @@
             android:id="@+id/linearstars"
             android:layout_width="55dp"
             android:layout_height="15dp"
-            android:layout_marginStart="240dp"
+            android:layout_marginStart="230dp"
 
             android:layout_marginTop="15dp"
             android:layout_marginEnd="24dp"

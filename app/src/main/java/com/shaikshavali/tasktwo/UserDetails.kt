@@ -139,7 +139,7 @@ class UserDetails : AppCompatActivity() {
 
 
         if (item != null) {
-            binding?.addUsers?.text = getString(R.string.edituser)
+            binding?.users?.text = getString(R.string.edituser)
             assigningFields(item)
             //Assigning all the user details to respective field... when it is not null only
         }
@@ -464,7 +464,7 @@ class UserDetails : AppCompatActivity() {
                 dobSelected = tvSelectDobDate?.text?.toString()
                 dateTimeSelected = tvSelectDateTime?.text?.toString()
 
-                val str = binding?.addUsers?.text.toString()
+                val str = binding?.users?.text.toString()
                 if (str == "Add Users") {
                     //checking for new user
                     addRecord()
